@@ -16,13 +16,13 @@ a baseline of these three essential logs:
 cat /var/log/auth.log
 grep "sudo"/var/auth.log
 grep "failed" /var/log/auth.log
-
+```
 
 ### Command
 
 ```bash
 grep "sudo" /var/log/auth.log
-
+```
 
 ---
 
@@ -38,13 +38,14 @@ grep "sudo" /var/log/auth.log
 
 2026-05-19T00:22:17.494169-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session closed for user root
 
-
+```
 
 ---
 
 ## 4. Analysis / Significance
 
 ```markdown id="jlwm4h"
+```
 ### Analysis
 
 This log sequence shows a successful sudo privilege escalation event.
