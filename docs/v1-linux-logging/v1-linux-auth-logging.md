@@ -8,9 +8,17 @@ a baseline of these three essential logs:
 - syslog
 - kern.log
 
-We will be performing this evaluation on LEE-Ubuntu-01 server.  It is my initial
-server that will be used for early labs.  It will also be used as the Living Enterprise
-evolves.  There will be 3 documents breaking down each log.
+This analysis was performed on:
+
+`LEE-Ubuntu-01`
+
+The server acts as the foundational Linux system for the Living Enterprise Environment (LEE) and will continue evolving throughout future labs involving:
+- SIEM ingestion
+- detection engineering
+- segmentation
+- authentication analysis
+- threat simulation
+
 
 ---
 
