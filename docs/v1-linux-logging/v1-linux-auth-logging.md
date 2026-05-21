@@ -1,12 +1,8 @@
 # V1 - Linux Logging + Establishing Baseline for Authentication Logs
 
 ## Objective
-Learn Linux logging and grep analysis, while creating
-a baseline of these three essential logs:
+Learn Linux system logging and grep analysis while establishing a baseline for normal operational telemetry generated within `/var/log/auth.log`.
 
-- auth.log
-- syslog
-- kern.log
 
 This analysis was performed on:
 
