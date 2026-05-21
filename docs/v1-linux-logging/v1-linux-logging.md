@@ -46,7 +46,7 @@ This represents a successful privilege escalation event using sudo.
 
 2026-05-19T00:22:17.494169-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session closed for user root
 
-## Elevated/root session ended normally
+## Elevated/root session ended normally.
 
 ```
 ### Command #2
@@ -88,19 +88,10 @@ cat /var/log/auth.log
 atibam@LEE-Ubuntu-01:~$ grep "Failed" /var/log/auth.log
 2026-05-19T00:13:13.626576-04:00 LEE-Ubuntu-01 dbus-daemon[1391]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
 
-## Ubuntu attempted to activate Bluetooth-related service and there was none
+## Ubuntu attempted to activate Bluetooth-related service and there were none present.
 ```
 
 ---
-
-## Analysis / Significance
-
-### Analysis
-
-This log sequence shows a successful sudo privilege escalation event.
-
-User `atibam` temporarily elevated privileges to root in order to read `/var/log/auth.log`.
-
 
 ## Security significance - Authentication logs can reveal:
 - privilege escalation
