@@ -1,4 +1,4 @@
-# V1 - Linux Logging + Establishing Baseline
+# V1 - Linux Logging + Establishing Baseline for Authentication Logs
 
 ## Objective
 Learn Linux logging and grep analysis, while creating
@@ -10,7 +10,7 @@ a baseline of these three essential logs:
 
 We will be performing this evaluation on LEE-Ubuntu-01 server.  It is my initial
 server that will be used for early labs.  It will also be used as the Living Enterprise
-evolves.
+evolves.  There will be 3 documents breaking down each log.
 
 ---
 
