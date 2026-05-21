@@ -32,7 +32,13 @@ grep "sudo" /var/log/auth.log
 
 2026-05-19T00:22:17.487386-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
 
-## Temporarily elevate privileges to root
+### Observation
+
+A privileged sudo session was opened for the root account by user `atibam`.
+
+### Significance
+
+This represents a successful privilege escalation event using sudo.
 
 2026-05-19T00:22:17.490304-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/home/atibam ; USER=root ; COMMAND=/usr/bin/cat /var/log/auth.log
 
@@ -62,7 +68,7 @@ cat /var/log/auth.log
 
 2026-05-19T00:04:29.292432-04:00 LEE-Ubuntu-01 pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by atibam(uid=1000)
 
-## Ubuntu equivalent of run as administrator
+##`pkexec` provides privilege escalation functionality similar to "Run as Administrator" in Windows environments.
 
 2026-05-19T00:17:01.078797-04:00 LEE-Ubuntu-01 CRON[5539]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
 
@@ -104,14 +110,13 @@ User `atibam` temporarily elevated privileges to root in order to read `/var/log
 
 ---
 
-## Baseline Observations
+## Key Takeaways
 
-- Successful graphical login events observed for user atibam
-- sudo usage correctly logged with command execution details
-- session open/close events visible through PAM
-- cron automated tasks generate authentication session logs
-- pkexec entries indicate GUI privilege escalation activity
-- Bluetooth service startup failure observed but determined non-security related
-- These behaviors establish the systems authentication baseline
+- Linux authentication activity is heavily logged through PAM and auth.log
+- sudo activity records both privilege escalation and executed commands
+- pkexec represents GUI-based privilege escalation
+- cron jobs generate authentication session telemetry
+- not all "Failed" log entries indicate malicious activity
+- establishing a baseline is critical for anomaly detection
 
 
