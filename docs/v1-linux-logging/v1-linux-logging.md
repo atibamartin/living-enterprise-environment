@@ -17,15 +17,7 @@ evolves.
 
 ## auth.log Evaluation
 
-## Commands Used
-
-```bash
-grep "sudo"/var/auth.log
-grep "failed" /var/log/auth.log
-cat /var/log/auth.log
-```
-
-### Command
+### Command #1
 
 ```bash
 grep "sudo" /var/log/auth.log
@@ -39,36 +31,20 @@ grep "sudo" /var/log/auth.log
 grep "sudo" /var/log/auth.log
 
 2026-05-19T00:22:17.487386-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
-
+## Temporarily elevate privileges to root
 2026-05-19T00:22:17.490304-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/home/atibam ; USER=root ; COMMAND=/usr/bin/cat /var/log/auth.log
-
+## Command that was run with sudo privilege
 2026-05-19T00:22:17.494169-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session closed for user root
+## Elevated/root session ended normally
 
 ```
-### Command
+### Command #2
 
 ```bash
 cat /var/log/auth.log
 ```
+## Log Output 
 
----
-
-## Log Output
-
-```markdown id="jlwm3h"
-grep "sudo" /var/log/auth.log
-
-2026-05-19T00:22:17.487386-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
-
-2026-05-19T00:22:17.490304-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/home/atibam ; USER=root ; COMMAND=/usr/bin/cat /var/log/auth.log
-
-2026-05-19T00:22:17.494169-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session closed for user root
-```
-```markdown id="jlwm3h"
-atibam@LEE-Ubuntu-01:~$ grep "Failed" /var/log/auth.log
-2026-05-19T00:13:13.626576-04:00 LEE-Ubuntu-01 dbus-daemon[1391]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
-## Ubuntu attempted to activate Bluetooth-related service and there was none
-```
 ```markdown id="jlwm3h"
 cat /var/log/auth.log
 2026-05-19T00:03:50.171024-04:00 LEE-Ubuntu-01 gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60578) by (uid=0)
@@ -86,6 +62,20 @@ cat /var/log/auth.log
 ## Attackers often use cron persistence.  Its a sign that the malware is attempting to maintain
 ## it's foothold on a system by using scheduled tasks to ensure it runs regularly.
 ```
+---
+### Command #3
+```bash
+ grep "Failed" /var/log/auth.log
+```
+
+## Log Output 
+
+```markdown id="jlwm3h"
+atibam@LEE-Ubuntu-01:~$ grep "Failed" /var/log/auth.log
+2026-05-19T00:13:13.626576-04:00 LEE-Ubuntu-01 dbus-daemon[1391]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+## Ubuntu attempted to activate Bluetooth-related service and there was none
+```
+
 ---
 
 ## Analysis / Significance
