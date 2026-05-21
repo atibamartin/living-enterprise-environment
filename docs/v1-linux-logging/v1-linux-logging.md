@@ -95,11 +95,6 @@ This log sequence shows a successful sudo privilege escalation event.
 
 User `atibam` temporarily elevated privileges to root in order to read `/var/log/auth.log`.
 
-## Important observations:
-- sudo activity is fully logged
-- executed commands are visible
-- session open and close events are recorded
-- this behavior forms part of the system authentication baseline
 
 ## Security significance - Authentication logs can reveal:
 - privilege escalation
@@ -117,5 +112,6 @@ User `atibam` temporarily elevated privileges to root in order to read `/var/log
 - cron automated tasks generate authentication session logs
 - pkexec entries indicate GUI privilege escalation activity
 - Bluetooth service startup failure observed but determined non-security related
+- These behaviors establish the systems authentication baseline
 
 
