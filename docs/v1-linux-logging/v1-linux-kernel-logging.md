@@ -46,8 +46,8 @@ Jun 16 17:29:54 LEE-Ubuntu-01 kernel: Linux version 7.0.0-15-generic (buildd@lcy
 16:06:43 UTC 2026 (Ubuntu 7.0.0-15.15-generic 7.0.0)
 Jun 16 17:29:54 LEE-Ubuntu-01 kernel: Command line: BOOT_IMAGE=/boot/vmlinuz-7.0.0-15-generic
 Souroot=UUID=0ed0761d-0447-4c73-8163-ec5a1e141e30 ro quiet splash crashkernel=2G-4G:320M,4G-32G:512M,32G-64G:1024M,64G-128G:2048M,128G-:4096M
-
-
+```
+---
 
 # Kernel / Boot Identity Baseline
 
@@ -75,7 +75,7 @@ Kernel and boot identity information was successfully captured.  Kernel boot out
 
 ```bash
 grep "network" /var/log/syslog
-```
+
 
 ## Log Output
 
