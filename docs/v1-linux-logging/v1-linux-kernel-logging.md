@@ -4,122 +4,81 @@
 
 Learn Linux system logging and grep analysis while establishing a baseline for normal operational telemetry generated within `/var/log/kernel.log`.
 
-This evaluation focuses on:
-- service lifecycle activity
-- network initialization
-- virtualization-related telemetry
-- AppArmor enforcement events
-- socket activity
-- NetworkManager behavior
-- systemd operational telemetry
+This evaluation focuses on documenting:
+- Kernel version, boot sesssion and boot messages
+- Storage elements
+- Network related information
+- Errors and Warnings
+- Memory and performance
+- Security Related Kernel Events
+
 
 This analysis was performed on:
 
 `LEE-Ubuntu-01`
 
 The server acts as the foundational Linux system for the Living Enterprise Environment (LEE) and will continue evolving throughout future labs involving:
+
 - SIEM ingestion
 - detection engineering
 - segmentation
 - authentication analysis
 - threat simulation
 
+# Identity
 ---
 
-# Command #1
+# Commands
 
 ```bash
-tail -50 /var/log/syslog
+uname -a
+journalctl -b 0 -k | head -n 30
 ```
 
 ## Log Output
 
 ```text
-2026-05-20T18:33:47.772570-04:00 LEE-Ubuntu-01 ssh-agent[1945]: exiting on signal 15
+Linux LEE-Ubuntu-01 7.0.0-15-generic #15-Ubuntu SMP PREEMPT_DYNAMIC Wed Apr 22 16:06:43 UTC 2026 x86_64 GNU/Linux
 
-2026-05-20T18:33:47.773942-04:00 LEE-Ubuntu-01 systemd[1775]: Stopped gcr-ssh-agent.service - GCR ssh-agent wrapper.
+atibam@LEE-Ubuntu-01:~$ journalctl -b 0 -k | head -n 30
+Jun 16 17:29:54 LEE-Ubuntu-01 kernel: Linux version 7.0.0-15-generic (buildd@lcy02-amd64-048) (x86_64-linux-gnu-gcc
+(Ubuntu 15.2.0-16ubuntu1) 15.2.0, GNU ld (GNU Binutils for Ubuntu) 2.46) #15-Ubuntu SMP PREEMPT_DYNAMIC Wed Apr 22
+16:06:43 UTC 2026 (Ubuntu 7.0.0-15.15-generic 7.0.0)
+Jun 16 17:29:54 LEE-Ubuntu-01 kernel: Command line: BOOT_IMAGE=/boot/vmlinuz-7.0.0-15-generic
+Souroot=UUID=0ed0761d-0447-4c73-8163-ec5a1e141e30 ro quiet splash crashkernel=2G-4G:320M,4G-32G:512M,32G-64G:1024M,64G-128G:2048M,128G-:4096M
 
-2026-05-20T18:33:47.774861-04:00 LEE-Ubuntu-01 systemd[1775]: Stopped ssh-agent.service - OpenSSH Agent.
-
-2026-05-20T18:33:47.825982-04:00 LEE-Ubuntu-01 systemd[1775]: app.slice: Consumed 2.314s CPU time over 34.003s wall clock time, 86.2M memory peak.
-
-2026-05-20T18:33:47.826041-04:00 LEE-Ubuntu-01 systemd[1775]: Reached target shutdown.target - Shutdown.
-
-2026-05-20T18:34:21.337772-04:00 LEE-Ubuntu-01 systemd[1]: geoclue.service: Deactivated successfully.
 ```
 
 ## Observations
 
-- `ssh-agent` terminated gracefully using signal 15 (SIGTERM)
-- systemd successfully stopped multiple services and sockets during session teardown
-- CPU and memory consumption telemetry was recorded for the session
-- services and sockets closed in an orderly sequence
-- `geoclue.service` deactivated successfully after inactivity
+Hostname: `LEE-Ubuntu-01`
+Kernel: `7.0.0-15-generic`
+Architecture: `x86_64`
+Build: `#15-Ubuntu SMP PREEMPT_DYNAMIC`
+Boot image: `/boot/vmlinuz-7.0.0-15-generic`
+Root device: `UUID=0ed0761d-0447-4c73-8163-ec5a1e141e30`
+NX protection: `active`
+SMBIOS: `2.7 present`
 
-## Security Significance
+```
 
-These entries represent normal Linux session and service shutdown behavior.
+## Kernel / Boot Identity Baseline
 
-Important operational concepts observed:
-- service lifecycle telemetry
-- process termination events
-- system resource consumption metrics
-- socket management
-- orderly session teardown
+The system is identified as `LEE-Ubuntu-01` and is running Linux kernel `7.0.0-15-generic` on an `x86_64` architecture.
+The kernel build is listed as `#15-Ubuntu SMP PREEMPT_DYNAMIC Wed Apr 22 16:06:43 UTC 2026`.
 
-Understanding normal shutdown behavior is critical because:
-- attackers may terminate services unexpectedly
-- malware may crash or force-stop processes
-- unusual shutdown sequences may indicate instability or malicious activity
+The system booted using `/boot/vmlinuz-7.0.0-15-generic` with the root filesystem identified by
+UUID `0ed0761d-0447-4c73-8163-ec5a1e141e30`. Kernel boot output confirmed the BIOS-provided memory map, supported CPU vendors, and SMBIOS presence.
+
+NX Execute Disable protection was reported as active, indicating memory execution protection is enabled.
+
+Assessment:
+Kernel and boot identity information was successfully captured. No abnormal boot identity issues were observed in the reviewed output.
+
 
 ---
 
-# Command #2
-
-```bash
-grep "error" /var/log/syslog
-```
-
-## Log Output
-
-```text
-2026-05-17T20:21:56.858163+00:00 LEE-Ubuntu-01 alsactl[1691]: alsa-lib main.c:1804:(snd_use_case_mgr_open) [error.ucm] failed to import hw:0 use case configuration -2
-
-2026-05-17T20:22:00.833189+00:00 LEE-Ubuntu-01 kernel: audit: type=1400 audit(1779049320.831:242): apparmor="DENIED" operation="mount" class="mount" info="failed flags match" error=-13 profile="snap-update-ns.desktop-security-center"
-
-2026-05-17T20:26:55.623340+00:00 LEE-Ubuntu-01 kernel: audit: type=1400 audit(1779049615.621:259): apparmor="DENIED" operation="getattr" class="file" info="Failed name lookup - disconnected path" error=-13
-
-2026-05-20T18:33:36.639891-04:00 LEE-Ubuntu-01 gnome-shell[3434]: libinput error: event2 - VirtualPS/2 VMware VMMouse: client bug: event processing lagging behind by 36ms, your system is too slow
-```
-
-## Observations
-
-- ALSA audio subsystem generated minor virtualization-related configuration warnings
-- AppArmor denied restricted operations and successfully enforced security policy
-- VMware virtual mouse generated minor performance lag telemetry
-- AppArmor events were recorded through the Linux kernel audit subsystem
-
-## Security Significance
-
-Important lesson:
-Not all log entries containing the words:
-- error
-- failed
-- denied
-
-represent malicious activity or compromise.
-
-Key findings:
-- AppArmor "DENIED" events often indicate security controls functioning correctly
-- virtualization environments commonly generate hardware abstraction noise
-- Linux desktop environments generate significant non-security operational telemetry
-
-Operational relevance:
-Security analysts must distinguish between:
-- normal operational noise
-- expected security-control enforcement
-- true anomalies requiring investigation
-
+# Identity
 ---
 
 # Command #3
