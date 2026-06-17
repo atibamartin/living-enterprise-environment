@@ -47,33 +47,23 @@ Jun 16 17:29:54 LEE-Ubuntu-01 kernel: Linux version 7.0.0-15-generic (buildd@lcy
 Jun 16 17:29:54 LEE-Ubuntu-01 kernel: Command line: BOOT_IMAGE=/boot/vmlinuz-7.0.0-15-generic
 Souroot=UUID=0ed0761d-0447-4c73-8163-ec5a1e141e30 ro quiet splash crashkernel=2G-4G:320M,4G-32G:512M,32G-64G:1024M,64G-128G:2048M,128G-:4096M
 
-```
 
-## Observations
 
-Hostname: `LEE-Ubuntu-01`
-Kernel: `7.0.0-15-generic`
-Architecture: `x86_64`
-Build: `#15-Ubuntu SMP PREEMPT_DYNAMIC`
-Boot image: `/boot/vmlinuz-7.0.0-15-generic`
-Root device: `UUID=0ed0761d-0447-4c73-8163-ec5a1e141e30`
-NX protection: `active`
-SMBIOS: `2.7 present`
+# Kernel / Boot Identity Baseline
 
-```
+- Hostname: `LEE-Ubuntu-01`
+- Kernel: `7.0.0-15-generic`
+- Architecture: `x86_64`
+- Build: `#15-Ubuntu SMP PREEMPT_DYNAMIC`
+- Boot image: `/boot/vmlinuz-7.0.0-15-generic`
+- Root device: `UUID=0ed0761d-0447-4c73-8163-ec5a1e141e30`
+- NX protection: `active` ( memory execution protection is enabled)
+- SMBIOS: `2.7 present`
 
-## Kernel / Boot Identity Baseline
 
-The system is identified as `LEE-Ubuntu-01` and is running Linux kernel `7.0.0-15-generic` on an `x86_64` architecture.
-The kernel build is listed as `#15-Ubuntu SMP PREEMPT_DYNAMIC Wed Apr 22 16:06:43 UTC 2026`.
 
-The system booted using `/boot/vmlinuz-7.0.0-15-generic` with the root filesystem identified by
-UUID `0ed0761d-0447-4c73-8163-ec5a1e141e30`. Kernel boot output confirmed the BIOS-provided memory map, supported CPU vendors, and SMBIOS presence.
-
-NX Execute Disable protection was reported as active, indicating memory execution protection is enabled.
-
-Assessment:
-Kernel and boot identity information was successfully captured. No abnormal boot identity issues were observed in the reviewed output.
+# Assessment:
+Kernel and boot identity information was successfully captured.  Kernel boot output confirmed the BIOS-provided memory map, supported CPU vendors, and SMBIOS presence. No abnormal boot identity issues were observed in the reviewed output.
 
 
 ---
