@@ -132,7 +132,7 @@ atibam@LEE-Ubuntu-01:/$ sudo grep "session opened" /var/log/auth.log
 2026-06-18T13:49:47.732305-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
 2026-06-18T13:49:47.733098-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/grep session opened /var/log/auth.log
 atibam@LEE-Ubuntu-01:/$ 
-
+```
 
 ---
 
