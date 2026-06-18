@@ -474,6 +474,35 @@ A single AppArmor DENIED event was observed involving the Snap firmware updater 
 
 AppArmor is functioning as expected and actively enforcing security controls. No evidence of unauthorized access attempts, privilege escalation, firewall denials, or malicious activity was observed.
 
+---
+### Log Rotation
+
+I evaluated the current configuration for log rotation.  It was set at it's default setting of saving logs weekly keeping the 
+last 4 logs.  I have updated so that logs are saved daily and the last 30 files are kept.
+
+
+## Configuration
+```text
+atibam@LEE-Ubuntu-01:/$ cat /etc/logrotate.d/rsyslog
+/var/log/syslog
+/var/log/mail.log
+/var/log/kern.log
+/var/log/auth.log
+/var/log/user.log
+/var/log/cron.log
+{
+	rotate 30
+	daily
+	missingok
+	notifempty
+	compress
+	delaycompress
+	sharedscripts
+	postrotate
+		/usr/lib/rsyslog/rsyslog-rotate
+	endscript
+}
+```
 
 ---
 
