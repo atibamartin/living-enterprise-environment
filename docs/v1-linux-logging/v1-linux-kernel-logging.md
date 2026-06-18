@@ -403,7 +403,7 @@ Kernel logs showed memory reservation, initialization, and swap activation event
 ### Assessment:
 Memory state appears healthy for the current VM workload. No evidence of memory exhaustion, swap pressure, or OOM activity was observed.
 
-## Questions answered:
+### Questions answered:
 
 - Did the system run out of memory?
 - Were processes killed?
@@ -492,7 +492,7 @@ A single AppArmor DENIED event was observed involving the Snap firmware updater 
 
 AppArmor is functioning as expected and actively enforcing security controls. No evidence of unauthorized access attempts, privilege escalation, firewall denials, or malicious activity was observed.
 
-## Questions answered:
+### Questions answered:
 
 - Was something denied?
 - Was security software triggered?
