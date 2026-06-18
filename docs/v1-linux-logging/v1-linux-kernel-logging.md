@@ -17,6 +17,15 @@ This analysis was performed on:
 
 `LEE-Ubuntu-01`
 
+## Environment Details
+
+Host Name: LEE-Ubuntu-01
+Operating System: Ubuntu Server 26.04
+Virtualization Platform: VMware Workstation Pro
+Allocated Memory: 4 GB
+Disk Size: 60 GB
+Purpose: Living Enterprise Environment (LEE)
+
 The server acts as the foundational Linux system for the Living Enterprise Environment (LEE) and will continue evolving throughout future labs involving:
 
 - SIEM ingestion
@@ -137,7 +146,7 @@ sr0     11:0    1   6.1G  0 rom  /run/media/atibam/Ubuntu 26.04 amd64
 
 ---
 
-# Storage Baseline
+# Findings
 
 - VM Disk: `sda`
 - Partitions: `sda1 & sda2`
@@ -145,8 +154,14 @@ sr0     11:0    1   6.1G  0 rom  /run/media/atibam/Ubuntu 26.04 amd64
 - Disk Size: `64.4 GB / 60.0 GiBHave`
 - Boot image: `/boot/vmlinuz-7.0.0-15-generic`
 - Root device: `UUID=0ed0761d-0447-4c73-8163-ec5a1e141e30`
-- NX protection: `active` ( memory execution protection is enabled)
-- SMBIOS: `2.7 present`
+
+
+### Assessment
+
+The system detected one SCSI disk identified as `/dev/sda` with a size of 64.4 GB / 60.0 GiB. Two partitions were detected: `sda1` and `sda2`.
+The root filesystem appears to be mounted on `sda2` using EXT4. During boot, the filesystem was first mounted read-only and later re-mounted read/write, which is normal Linux boot behavior.
+No disk I/O errors, filesystem corruption errors, or critical storage failures were observed in the reviewed kernel boot logs.
+AppArmor denial events observed for fusermount3. These appear related to mount/FUSE behavior and should be baselined for comparison against future abnormal events
 
 ## Questions Answered
 
@@ -156,13 +171,6 @@ sr0     11:0    1   6.1G  0 rom  /run/media/atibam/Ubuntu 26.04 amd64
 - Any corruption?
 - Any disk failures?
 
-
-### Storage Baseline
-
-The system detected one SCSI disk identified as `/dev/sda` with a size of 64.4 GB / 60.0 GiB. Two partitions were detected: `sda1` and `sda2`.
-The root filesystem appears to be mounted on `sda2` using EXT4. During boot, the filesystem was first mounted read-only and later re-mounted read/write, which is normal Linux boot behavior.
-No disk I/O errors, filesystem corruption errors, or critical storage failures were observed in the reviewed kernel boot logs.
-AppArmor denial events observed for fusermount3. These appear related to mount/FUSE behavior and should be baselined for comparison against future abnormal events
 
 ---
 
@@ -213,17 +221,25 @@ tha
 
 ---
 
-# Network Interface Baseline
+# Findings
 
 - Interface name: `ens33`
 - Link state messages: `NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None`
 - Errors found: none
 - IP address: `192.168.133.129/24`
 - MAC address:  `00:0c:29:75:c4:58`
+- Driver: `e1000`
+- Adapter: `
 - Status: `UP`
 - Interface Type: `Broadcast / Multicast Ethernet Interface`
 - Notes: `No network-related kernel errors observed during initial baseline review.`
 
+
+### Assessment
+
+We identified the netwok interface name and status.  There were no network driver errors and functionality. We were able to identify 
+the interface type, duplex and bandwidth.  The interface initialized as eth0 and was renamed during boot to ens33.  No network related
+kernel warnings or errors were observed.
 
 ## Questions Answered
 
@@ -233,11 +249,7 @@ tha
 - Any network hardware issues?
 
 
-### Network Baseline
 
-We identified the netwok interface name and status.  There were no network driver errors and functionality. We were able to identify 
-the interface type, duplex and bandwidth.  The interface initialized as eth0 and was renamed during boot to ens33.  No network related
-kernel warnings or errors were observed.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -300,7 +312,7 @@ atibam@LEE-Ubuntu-01:~$
 ### Warnings/Errors Assessment
 
 When running a grep command to search for the items that will point to an issue or failure, there were no results/output.
-The remaining output from commands run provided information that validates that there are no current issues.
+The reviewed warnings appear consistent with expected VMware virtualization behavior and do not indicate active system instability or compromise.
 
 
 
@@ -391,6 +403,12 @@ Kernel logs showed memory reservation, initialization, and swap activation event
 ### Assessment:
 Memory state appears healthy for the current VM workload. No evidence of memory exhaustion, swap pressure, or OOM activity was observed.
 
+## Questions answered:
+
+- Did the system run out of memory?
+- Were processes killed?
+- Any memory pressure?
+
 ---
 
 
@@ -473,6 +491,12 @@ A single AppArmor DENIED event was observed involving the Snap firmware updater 
 ### Assessment:
 
 AppArmor is functioning as expected and actively enforcing security controls. No evidence of unauthorized access attempts, privilege escalation, firewall denials, or malicious activity was observed.
+
+## Questions answered:
+
+- Was something denied?
+- Was security software triggered?
+- Were capabilities blocked?
 
 ---
 ### Log Rotation
