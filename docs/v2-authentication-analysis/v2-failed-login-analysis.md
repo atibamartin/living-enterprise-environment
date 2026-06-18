@@ -32,6 +32,109 @@ After installing and enabling the SSH service, both failed and successful authen
 This troubleshooting process provided additional understanding of SSH service dependencies and authentication logging behavior within Ubuntu Linux.
 
 ---
+## Logging
+
+```bash
+tibam@LEE-Ubuntu-01:/$ sudo grep "sshd" /var/log/auth.log
+[sudo: authenticate] Password:                
+2026-06-18T13:01:04.234184-04:00 LEE-Ubuntu-01 sshd[5532]: Server listening on 0.0.0.0 port 22.
+2026-06-18T13:01:04.234300-04:00 LEE-Ubuntu-01 sshd[5532]: Server listening on :: port 22.
+2026-06-18T13:05:50.654875-04:00 LEE-Ubuntu-01 sshd-session[6039]: Invalid user fakeuser from 192.168.133.128 port 51806
+2026-06-18T13:05:54.719616-04:00 LEE-Ubuntu-01 sshd-session[6039]: pam_unix(sshd:auth): check pass; user unknown
+2026-06-18T13:05:54.719801-04:00 LEE-Ubuntu-01 sshd-session[6039]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.133.128 
+2026-06-18T13:05:57.006219-04:00 LEE-Ubuntu-01 sshd-session[6039]: Failed password for invalid user fakeuser from 192.168.133.128 port 51806 ssh2
+2026-06-18T13:06:04.964874-04:00 LEE-Ubuntu-01 sshd-session[6039]: pam_unix(sshd:auth): check pass; user unknown
+2026-06-18T13:06:06.835433-04:00 LEE-Ubuntu-01 sshd-session[6039]: Failed password for invalid user fakeuser from 192.168.133.128 port 51806 ssh2
+2026-06-18T13:06:15.043623-04:00 LEE-Ubuntu-01 sshd-session[6039]: pam_unix(sshd:auth): check pass; user unknown
+2026-06-18T13:06:17.001779-04:00 LEE-Ubuntu-01 sshd-session[6039]: Failed password for invalid user fakeuser from 192.168.133.128 port 51806 ssh2
+2026-06-18T13:06:18.356871-04:00 LEE-Ubuntu-01 sshd-session[6039]: Connection closed by invalid user fakeuser 192.168.133.128 port 51806 [preauth]
+2026-06-18T13:06:18.358830-04:00 LEE-Ubuntu-01 sshd-session[6039]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.133.128 
+2026-06-18T13:08:34.601419-04:00 LEE-Ubuntu-01 sshd-session[6056]: Invalid user fakeuser from 192.168.133.128 port 58292
+2026-06-18T13:08:42.538167-04:00 LEE-Ubuntu-01 sshd-session[6056]: pam_unix(sshd:auth): check pass; user unknown
+2026-06-18T13:08:42.538288-04:00 LEE-Ubuntu-01 sshd-session[6056]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.133.128 
+2026-06-18T13:08:44.550632-04:00 LEE-Ubuntu-01 sshd-session[6056]: Failed password for invalid user fakeuser from 192.168.133.128 port 58292 ssh2
+2026-06-18T13:08:51.848901-04:00 LEE-Ubuntu-01 sshd-session[6056]: pam_unix(sshd:auth): check pass; user unknown
+2026-06-18T13:08:53.568231-04:00 LEE-Ubuntu-01 sshd-session[6056]: Failed password for invalid user fakeuser from 192.168.133.128 port 58292 ssh2
+2026-06-18T13:08:57.030794-04:00 LEE-Ubuntu-01 sshd-session[6056]: pam_unix(sshd:auth): check pass; user unknown
+2026-06-18T13:08:59.643414-04:00 LEE-Ubuntu-01 sshd-session[6056]: Failed password for invalid user fakeuser from 192.168.133.128 port 58292 ssh2
+2026-06-18T13:09:00.344767-04:00 LEE-Ubuntu-01 sshd-session[6056]: Connection closed by invalid user fakeuser 192.168.133.128 port 58292 [preauth]
+2026-06-18T13:09:00.345456-04:00 LEE-Ubuntu-01 sshd-session[6056]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.133.128 
+2026-06-18T13:09:22.516153-04:00 LEE-Ubuntu-01 sshd-session[6079]: Accepted password for atibam from 192.168.133.128 port 41650 ssh2
+2026-06-18T13:09:22.518491-04:00 LEE-Ubuntu-01 sshd-session[6079]: pam_unix(sshd:session): session opened for user atibam(uid=1000) by atibam(uid=0)
+2026-06-18T13:13:48.841924-04:00 LEE-Ubuntu-01 sshd-session[6079]: syslogin_perform_logout: logout() returned an error
+2026-06-18T13:13:48.844257-04:00 LEE-Ubuntu-01 sshd-session[6146]: Received disconnect from 192.168.133.128 port 41650:11: disconnected by user
+2026-06-18T13:13:48.845415-04:00 LEE-Ubuntu-01 sshd-session[6146]: Disconnected from user atibam 192.168.133.128 port 41650
+2026-06-18T13:13:48.845507-04:00 LEE-Ubuntu-01 sshd-session[6079]: pam_unix(sshd:session): session closed for user atibam
+2026-06-18T13:46:18.072759-04:00 LEE-Ubuntu-01 sshd[1745]: Server listening on 0.0.0.0 port 22.
+2026-06-18T13:46:18.072856-04:00 LEE-Ubuntu-01 sshd[1745]: Server listening on :: port 22.
+2026-06-18T13:47:27.444945-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/grep sshd /var/log/auth.log
+atibam@LEE-Ubuntu-01:/$ 
+atibam@LEE-Ubuntu-01:/$ sudo grep "Failed password" /var/log/auth.log
+2026-06-18T13:05:57.006219-04:00 LEE-Ubuntu-01 sshd-session[6039]: Failed password for invalid user fakeuser from 192.168.133.128 port 51806 ssh2
+2026-06-18T13:06:06.835433-04:00 LEE-Ubuntu-01 sshd-session[6039]: Failed password for invalid user fakeuser from 192.168.133.128 port 51806 ssh2
+2026-06-18T13:06:17.001779-04:00 LEE-Ubuntu-01 sshd-session[6039]: Failed password for invalid user fakeuser from 192.168.133.128 port 51806 ssh2
+2026-06-18T13:08:44.550632-04:00 LEE-Ubuntu-01 sshd-session[6056]: Failed password for invalid user fakeuser from 192.168.133.128 port 58292 ssh2
+2026-06-18T13:08:53.568231-04:00 LEE-Ubuntu-01 sshd-session[6056]: Failed password for invalid user fakeuser from 192.168.133.128 port 58292 ssh2
+2026-06-18T13:08:59.643414-04:00 LEE-Ubuntu-01 sshd-session[6056]: Failed password for invalid user fakeuser from 192.168.133.128 port 58292 ssh2
+2026-06-18T13:48:29.311952-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/grep Failed password /var/log/auth.log
+atibam@LEE-Ubuntu-01:/$ 
+atibam@LEE-Ubuntu-01:/$ 
+atibam@LEE-Ubuntu-01:/$ sudo grep "Invalid user" /var/log/auth.log
+2026-06-18T13:05:50.654875-04:00 LEE-Ubuntu-01 sshd-session[6039]: Invalid user fakeuser from 192.168.133.128 port 51806
+2026-06-18T13:08:34.601419-04:00 LEE-Ubuntu-01 sshd-session[6056]: Invalid user fakeuser from 192.168.133.128 port 58292
+2026-06-18T13:49:02.012296-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/grep Invalid user /var/log/auth.log
+atibam@LEE-Ubuntu-01:/$ 
+atibam@LEE-Ubuntu-01:/$ 
+atibam@LEE-Ubuntu-01:/$ sudo grep "Accepted" /var/log/auth.log
+2026-06-18T11:06:47.235927-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/grep Accepted /var/log/auth.log
+2026-06-18T13:09:22.516153-04:00 LEE-Ubuntu-01 sshd-session[6079]: Accepted password for atibam from 192.168.133.128 port 41650 ssh2
+2026-06-18T13:49:32.727293-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/grep Accepted /var/log/auth.log
+atibam@LEE-Ubuntu-01:/$ 
+atibam@LEE-Ubuntu-01:/$ 
+atibam@LEE-Ubuntu-01:/$ sudo grep "session opened" /var/log/auth.log
+2026-06-18T11:01:29.044178-04:00 LEE-Ubuntu-01 gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60578) by (uid=0)
+2026-06-18T11:01:29.307518-04:00 LEE-Ubuntu-01 (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60578) by gdm-greeter(uid=0)
+2026-06-18T11:05:05.942099-04:00 LEE-Ubuntu-01 gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60578) by (uid=0)
+2026-06-18T11:05:06.138849-04:00 LEE-Ubuntu-01 (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60578) by gdm-greeter(uid=0)
+2026-06-18T11:05:52.671406-04:00 LEE-Ubuntu-01 gdm-password]: pam_unix(gdm-password:session): session opened for user atibam(uid=1000) by atibam(uid=0)
+2026-06-18T11:05:52.739071-04:00 LEE-Ubuntu-01 (systemd): pam_unix(systemd-user:session): session opened for user atibam(uid=1000) by atibam(uid=0)
+2026-06-18T11:06:03.391274-04:00 LEE-Ubuntu-01 pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T11:06:47.235211-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T11:17:01.540439-04:00 LEE-Ubuntu-01 CRON[4780]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-06-18T11:30:01.565502-04:00 LEE-Ubuntu-01 CRON[4832]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-06-18T12:17:01.630890-04:00 LEE-Ubuntu-01 CRON[5267]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-06-18T12:30:01.658212-04:00 LEE-Ubuntu-01 CRON[5293]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-06-18T12:54:46.040247-04:00 LEE-Ubuntu-01 gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60578) by (uid=0)
+2026-06-18T12:54:46.230539-04:00 LEE-Ubuntu-01 (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60578) by gdm-greeter(uid=0)
+2026-06-18T12:58:12.786342-04:00 LEE-Ubuntu-01 gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60578) by (uid=0)
+2026-06-18T12:58:13.048598-04:00 LEE-Ubuntu-01 (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60578) by gdm-greeter(uid=0)
+2026-06-18T12:58:25.359175-04:00 LEE-Ubuntu-01 gdm-password]: pam_unix(gdm-password:session): session opened for user atibam(uid=1000) by atibam(uid=0)
+2026-06-18T12:58:25.456903-04:00 LEE-Ubuntu-01 (systemd): pam_unix(systemd-user:session): session opened for user atibam(uid=1000) by atibam(uid=0)
+2026-06-18T12:58:35.675082-04:00 LEE-Ubuntu-01 pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:00:16.365672-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:00:24.499277-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:01:04.164285-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:01:11.497858-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:01:32.782871-04:00 LEE-Ubuntu-01 pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:09:22.518491-04:00 LEE-Ubuntu-01 sshd-session[6079]: pam_unix(sshd:session): session opened for user atibam(uid=1000) by atibam(uid=0)
+2026-06-18T13:11:17.389004-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:17:01.187499-04:00 LEE-Ubuntu-01 CRON[6284]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-06-18T13:30:01.212743-04:00 LEE-Ubuntu-01 CRON[6311]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-06-18T13:46:18.603121-04:00 LEE-Ubuntu-01 gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60578) by (uid=0)
+2026-06-18T13:46:18.767162-04:00 LEE-Ubuntu-01 (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60578) by gdm-greeter(uid=0)
+2026-06-18T13:46:38.556922-04:00 LEE-Ubuntu-01 gdm-password]: pam_unix(gdm-password:session): session opened for user atibam(uid=1000) by atibam(uid=0)
+2026-06-18T13:46:38.640579-04:00 LEE-Ubuntu-01 (systemd): pam_unix(systemd-user:session): session opened for user atibam(uid=1000) by atibam(uid=0)
+2026-06-18T13:46:48.331197-04:00 LEE-Ubuntu-01 pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:47:27.444634-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:48:29.311767-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:49:02.011087-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:49:32.726438-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:49:47.732305-04:00 LEE-Ubuntu-01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by atibam(uid=1000)
+2026-06-18T13:49:47.733098-04:00 LEE-Ubuntu-01 sudo: atibam : TTY=/dev/pts/0 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/grep session opened /var/log/auth.log
+atibam@LEE-Ubuntu-01:/$ 
+
+
+---
 
 ### Post-Authentication Validation
 
