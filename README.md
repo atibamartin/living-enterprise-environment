@@ -40,6 +40,8 @@ and detection engineering lab.
 
 ### Phase 1 – Linux Logging ✅
 
+Status: Completed
+
 - auth.log
 - syslog
 - kern.log
@@ -52,9 +54,9 @@ Documentation:
 
 ---
 
-### Phase 2 – Authentication Analysis 🚧
+### Phase 2 – Authentication Analysis ✅
 
-Status: Planned
+Status: Completed
 
 Focus Areas:
 
@@ -64,21 +66,35 @@ Focus Areas:
 - Account Lockouts
 - Privilege Escalation
 
+Documentation:
+
+- v2-authentication-baseline.md
+- v2-linux-authentication-baseline.md
+- v2-sudo-analysis.md
+
 ---
 
-### Phase 3 – Windows Integration
+### Phase 3 – Windows Integration 🚧
+
+Status: In Progress
+
+Focus Areas:
+
+- Windows Event Viewer
+- Security Logs
+- System Logs
+- Application Logs
+- Privilege Escalation
+
+---
+
+### Phase 4 – SIEM Deployment 🚧
 
 Planned
 
 ---
 
-### Phase 4 – SIEM Deployment
-
-Planned
-
----
-
-### Phase 5 – Threat Simulation
+### Phase 5 – Threat Simulation 🚧
 
 Planned
 
