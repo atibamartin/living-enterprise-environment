@@ -144,9 +144,9 @@ During the privilege escalation exercise, several artifacts were identified and 
 | ----------------- | ------------------- | ---------------------------------- |
 | User              | atibam              | Who executed the command           |
 | TTY               | /dev/pts/0          | Interactive terminal used          |
-| USER              | root                | Working directory at execution     |
+| USER              | root                | Target account being accessed      |
 | PWD               | /usr/bin/           | Working directory at execution     |
-| Host              | LEE-Ubuntu-01       | Working directory at execution     |
+| Host              | LEE-Ubuntu-01       | System where activity occurred     |
 
 ---
 | Command                          | Date/Time Executed          | User       | Date/Time Executed                     | Successful (Y/N) |       
