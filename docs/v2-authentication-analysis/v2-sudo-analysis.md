@@ -185,7 +185,16 @@ The following actions would warrant additional investigation if observed in a pr
 | Privileged commands executed outside approved maintenance windows | Potential insider threat or compromised account activity     |
 
 All observed activity during this exercise was validated as expected administrative behavior and successfully correlated to authorized testing performed within the Living Enterprise Environment (LEE).
+---
+## Key Observations
 
+- All privileged activity originated from the authorized account `atibam`.
+- Every sudo session successfully opened and closed.
+- No failed sudo attempts were observed.
+- No unauthorized privilege escalation activity was detected.
+- User creation and privilege modification events were successfully logged.
+- Commands executed through sudo were fully recorded within auth.log.
+---
 
 - ## Assessment
 
