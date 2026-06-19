@@ -1,9 +1,10 @@
 ## Project Overview
 
-In this exercise we are evaluating priviledge escalation and activities executed while in that state.  Privilege escalation happens at the tactic level within the MITRE ATT&CK framework and
-refers to obtaining higher-level permissions or access rights within a system.  This is a gateway to full system compromise including, persistent control.  To understand
-this concept better I will perform various activities in the privilige state within the linux system including admin duties.  I will then evaluate the logs parsing information pertaining
-to escalated privilege activities, document my findings and the possible IOC's.
+In this exercise we are evaluating priviledge escalation and activities executed while in that state.  Privilege Escalation is a tactic within the MITRE ATT&CK 
+framework that describes techniques used to obtain higher-level permissions on a system. Adversaries often use privilege escalation to gain access to restricted 
+resources, execute administrative actions, establish persistence, or move laterally through an environment. I will perform various activities in the privilige
+state within the linux system including admin duties.  I will then evaluate the logs parsing information pertaining to escalated privilege activities, document
+my findings and the possible IOC's.
 
 It is known that there are many "Single Pane of Glass" applications that are available that can be configured to collect, analyse, correlate and evaluate
 if an alert needs to be sent or some automated duty needs to be activated/performed.  The purpose of this exercise is to perform the evaluation on the raw data
@@ -26,7 +27,7 @@ The server acts as the foundational Linux system for the Living Enterprise Envir
 # Commands Used
 
 
-`sudo grepsudo /var/log/auth.log`  -  Documenting current sudo log entries.
+`sudo grep sudo /var/log/auth.log`  -  Documenting current sudo log entries.
 
 `sudo ls /root`  -  Minimal risk privilege escalation.
 
@@ -38,7 +39,7 @@ The server acts as the foundational Linux system for the Living Enterprise Envir
 
 `sudo useradd -m testuser`  -  Creating new user testuser.
 
-`sudo usermod-aG sudo testuser`  -  Permission modification.
+`sudo usermod -aG sudo testuser`  -  Permission modification.
 
 `grep sudo /var/log/auth.log`  -  Pulling logs for investigation purposes.
 
@@ -139,11 +140,13 @@ atibam@LEE-Ubuntu-01:/$ grep sudo /var/log/auth.log
 
 During the privilege escalation exercise, several artifacts were identified and collected from `auth.log`. These artifacts provide context regarding the source of the activity, the time of said activities, commands executed, the user and the outcome of each attempt.
 
-| Artifact          | Value               | Value                              |
+| Artifact          | Observed Value      | Purpose                            |
 | ----------------- | ------------------- | ---------------------------------- |
-| User/s            | atibam              | Who executed the command           |
+| User              | atibam              | Who executed the command           |
 | TTY               | /dev/pts/0          | Interactive terminal used          |
+| USER              | root                | Working directory at execution     |
 | PWD               | /usr/bin/           | Working directory at execution     |
+| Host              | LEE-Ubuntu-01       | Working directory at execution     |
 
 ---
 | Command                          | Date/Time Executed          | User       | Date/Time Executed                     | Successful (Y/N) |       
@@ -164,9 +167,28 @@ For each sudo event we ask ourselves the following question:
 - Where or what host/s what this activity taking place?
 - What was authorized and was it expected activity or potential misuse?
 
+---
+
+## Potential Indicators of Compromise (IOCs)
+
+No confirmed Indicators of Compromise were observed during this exercise. All privileged activity originated from the authorized administrative account (`atibam`) and was intentionally generated for lab validation purposes.
+
+The following actions would warrant additional investigation if observed in a production environment without a corresponding change request, maintenance window, or approved administrative task:
+
+| Activity                                                          | Security Concern                                             |
+| ----------------------------------------------------------------- | ------------------------------------------------------------ |
+| Accessing `/etc/shadow`                                           | Possible credential harvesting or password auditing activity |
+| Creation of new user accounts                                     | Potential persistence mechanism                              |
+| Adding users to the `sudo` group                                  | Privilege escalation or unauthorized administrative access   |
+| Repeated execution of privileged commands                         | Potential misuse of administrative privileges                |
+| Unexpected `sudo apt` activity                                    | Unauthorized software installation or system modification    |
+| Privileged commands executed outside approved maintenance windows | Potential insider threat or compromised account activity     |
+
+All observed activity during this exercise was validated as expected administrative behavior and successfully correlated to authorized testing performed within the Living Enterprise Environment (LEE).
+
+
 - ## Assessment
 
-Properly evaluating the privilige activity and validating whether it was expected activity or an IOC is highly important when working to protect systems.
-Correlating this activity with ongoing tasks, open or closed tickets requesting new user creation or scheduled change tickets for new user creation and
-system updates is important.  It will allow for the elimination of IOCs and better usage of time and resources.  
+The ability to distinguish legitimate administrative activity from potentially malicious behavior is a fundamental responsibility of security operations personnel.
+Reviewing privileged activity in context, correlating events with approved change requests, maintenance windows, or service tickets helps reduce false positives and allows analysts to focus on genuine threats.
 
