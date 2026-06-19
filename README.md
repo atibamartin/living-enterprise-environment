@@ -90,7 +90,7 @@ Focus Areas:
 
 ### Phase 4 – SIEM Deployment 🚧
 
-Planned
+Status:  Planned
 
 ---
 
