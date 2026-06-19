@@ -5,10 +5,10 @@ refers to obtaining higher-level permissions or access rights within a system.  
 this concept better I will perform various activities in the privilige state within the linux system including admin duties.  I will then evaluate the logs parsing information pertaining
 to escalated privilege activities, document my findings and the possible IOC's.
 
-it is known that there are many "Single Pane of Glass" applications that are available that can be configured to collect, analyse, correlate and evaluate
-if an alert need to be sent or some automated duty needs to be activated.  This purpose of this exercise is to perform the evaluation on the raw data
-found in logs.  This will strengenthen foundational understanding of what has possible happened when a specific alert is sent from a SIEM.  
-This leaves the mind open to other tasks and activities that can take place to verify the fortitude of the systems being monitored.
+It is known that there are many "Single Pane of Glass" applications that are available that can be configured to collect, analyse, correlate and evaluate
+if an alert needs to be sent or some automated duty needs to be activated/performed.  The purpose of this exercise is to perform the evaluation on the raw data
+found in logs.  This will strengenthen foundational understanding of what has possible happened when a specific alert is sent from a SIEM.  This leaves the mind
+open to other tasks and activities that can take place to verify the fortitude of the systems being monitored.
 
 This analysis was performed on:
 
@@ -27,12 +27,19 @@ The server acts as the foundational Linux system for the Living Enterprise Envir
 
 
 `sudo grepsudo /var/log/auth.log`  -  Documenting current sudo log entries.
+
 `sudo ls /root`  -  Minimal risk privilege escalation.
+
 `sudo cat /etc/shadow`  -  Accessing shadow file containing sensitive information including encrypted password information.
+
 `sudo systemctl status ssh`  -  Administrative service inquiry.
+
 `sudo apt update`  -  Administrative maintenance task.
+
 `sudo useradd -m testuser`  -  Creating new user testuser.
+
 `sudo usermod-aG sudo testuser`  -  Permission modification.
+
 `grep sudo /var/log/auth.log`  -  Pulling logs for investigation purposes.
 
 # Command Output
