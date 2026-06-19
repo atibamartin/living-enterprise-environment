@@ -16,6 +16,20 @@ Desktop Experience was selected to facilitate:
 
 Following remediation of a VMware virtual networking issue, network connectivity was successfully restored and validated between the Linux and Windows systems.
 
+### Network Validation Findings
+
+Following restoration of VMware networking services, both systems successfully obtained DHCP leases and Internet connectivity.
+
+Additional testing revealed asymmetric ICMP communication:
+
+* Windows Server → Ubuntu Server: Successful
+* Ubuntu Server → Windows Server: Failed
+
+Investigation identified the Windows network profile as Public and inbound ICMP firewall rules were disabled by default.
+
+This demonstrated the impact of host-based firewall controls on connectivity testing despite successful network-layer communication.
+
+
 ### LEE-WIN-SRV-01
 
 * Hostname: LEE-WIN-SRV-01
