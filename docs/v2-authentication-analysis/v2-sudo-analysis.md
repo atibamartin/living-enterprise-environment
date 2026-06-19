@@ -8,7 +8,7 @@ my findings and the possible IOC's.
 
 It is known that there are many "Single Pane of Glass" applications that are available that can be configured to collect, analyse, correlate and evaluate
 if an alert needs to be sent or some automated duty needs to be activated/performed.  The purpose of this exercise is to perform the evaluation on the raw data
-found in logs.  This will strengenthen foundational understanding of what has possible happened when a specific alert is sent from a SIEM.  This leaves the mind
+found in logs.  This will strengenthen foundational understanding of what has possibly happened when a specific alert is sent from a SIEM.  This leaves the mind
 open to other tasks and activities that can take place to verify the fortitude of the systems being monitored.
 
 This analysis was performed on:
