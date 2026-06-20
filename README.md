@@ -38,6 +38,8 @@ and detection engineering lab.
 
 # Project Roadmap
 
+---
+
 # Phase 1 - OS Foundations
 
 ###  V1 – Linux Logging ✅
