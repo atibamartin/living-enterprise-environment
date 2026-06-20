@@ -177,12 +177,6 @@ Examples:
 - User creation
 - Service changes
 
-Questions:
-
-- What logs are generated?
-- What rules trigger?
-- What alerts appear?
-
 Skills:
 
 - Detection validation
