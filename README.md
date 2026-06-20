@@ -36,7 +36,7 @@ and detection engineering lab.
 
 ---
 
-## Project Roadmap
+# Project Roadmap
 
 # Phase 1 - OS Foundations
 
@@ -54,7 +54,6 @@ Documentation:
 - v1-linux-syslog-logging.md
 - v1-linux-kernel-logging.md
 
----
 
 ### V2 – Authentication Analysis ✅
 
@@ -74,7 +73,6 @@ Documentation:
 - v2-linux-authentication-baseline.md
 - v2-sudo-analysis.md
 
----
 
 ### V3 – Windows Integration 🚧
 
@@ -93,6 +91,7 @@ Documentation:
 - v3-windows-server-build.md
 - v3-linux-syslog-logging.md
 - v1-linux-kernel-logging.md
+
 ---
 
 # Phase 2 - Network Architecture 🚧
@@ -136,8 +135,8 @@ Skills:
 - Traffic flow analysis
 
 Deliverable:
+Network Segmentiation Plan
 
-Network Segmentation Plan
 ---
 
 # Phase 3 - Security Monitoring Foundations 🚧
@@ -193,6 +192,8 @@ Deliverable:
 
 Known Event Catalog
 
+---
+
 # Phase 4 - Threat Simulation 🚧
 
 Status:  Planned
@@ -219,7 +220,6 @@ Deliverable:
 
 Attack Detection Report
 
----
 
 ### V9 - Windows Attack Simulation
 
@@ -239,15 +239,13 @@ Deliverable:
 Windows Threat Detection Report
 
 
-### Phase 5 – Network Security 🚧
+# Phase 5 – Network Security 🚧
 
 Status:  Planned
 
 ## Objective
 
 Understand enterprise network controls.
-
----
 
 ### V10 - pfSense Deployment
 
@@ -288,8 +286,7 @@ LEE Network Design
 
 ---
 
-### Phase 6 – SOC Operations 🚧
-
+# Phase 6 – SOC Operations 🚧
 
 ## Objective
 
@@ -304,15 +301,6 @@ Focus:
 - Reduce false positives
 - Improve alert quality
 
-## Skills:
-
-- Detection engineering
-
-Deliverable:
-
-Detection Rule Library
-
----
 
 ### V13 - Threat Hunting Exercises
 
@@ -332,8 +320,6 @@ Skills:
 Deliverable:
 
 Threat Hunt Reports
-
----
 
 ### V14 - Incident Response Exercises
 
@@ -364,7 +350,6 @@ Planned
 
 Design security controls rather than simply monitor them.
 
----
 
 ### V15 - Vulnerability Management
 
@@ -382,7 +367,6 @@ Deliverable:
 
 Vulnerability Assessment Report
 
----
 
 ### V16 - Security Hardening
 
