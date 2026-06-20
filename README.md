@@ -1,11 +1,12 @@
-
-Living Enterprise Environment — A continuously evolving cloud, cybersecurity, virtualization, and automation lab environment focused on building real-world enterprise skills through hands-on projects, infrastructure design, documentation, security analysis, and DevSecOps workflows. This repository will document the development of labs, scripts, architectures, troubleshooting processes, and operational knowledge across VMware, Linux, networking, cloud platforms, SIEM/SOAR tooling, Terraform, automation, and defensive security practices.
-
 # Living Enterprise Environment (LEE)
 
 A continuously evolving cybersecurity,
 cloud, virtualization, automation,
 and detection engineering lab.
+
+---
+
+Living Enterprise Environment — A continuously evolving cloud, cybersecurity, virtualization, and automation lab environment focused on building real-world enterprise skills through hands-on projects, infrastructure design, documentation, security analysis, and DevSecOps workflows. This repository will document the development of labs, scripts, architectures, troubleshooting processes, and operational knowledge across VMware, Linux, networking, cloud platforms, SIEM/SOAR tooling, Terraform, automation, and defensive security practices.
 
 ---
 
