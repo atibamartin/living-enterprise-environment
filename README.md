@@ -1,4 +1,4 @@
-# living-enterprise-environment
+
 Living Enterprise Environment — A continuously evolving cloud, cybersecurity, virtualization, and automation lab environment focused on building real-world enterprise skills through hands-on projects, infrastructure design, documentation, security analysis, and DevSecOps workflows. This repository will document the development of labs, scripts, architectures, troubleshooting processes, and operational knowledge across VMware, Linux, networking, cloud platforms, SIEM/SOAR tooling, Terraform, automation, and defensive security practices.
 
 # Living Enterprise Environment (LEE)
@@ -55,7 +55,8 @@ Documentation:
 - v1-linux-auth-logging.md
 - v1-linux-syslog-logging.md
 - v1-linux-kernel-logging.md
-
+- 
+<br/>
 
 ### V2 – Authentication Analysis ✅
 
@@ -93,8 +94,11 @@ Documentation:
 - v3-windows-server-build.md
 - v3-linux-syslog-logging.md
 - v1-linux-kernel-logging.md
-
+  
 ---
+
+<br/>
+
 
 # Phase 2 - Network Architecture 🚧
 
@@ -140,6 +144,9 @@ Deliverable:
 Network Segmentiation Plan
 
 ---
+
+<br/>
+
 
 # Phase 3 - Security Monitoring Foundations 🚧
 
@@ -190,6 +197,8 @@ Known Event Catalog
 
 ---
 
+<br/>
+
 # Phase 4 - Threat Simulation 🚧
 
 Status:  Planned
@@ -234,6 +243,10 @@ Deliverable:
 
 Windows Threat Detection Report
 
+
+---
+
+<br/>
 
 # Phase 5 – Network Security 🚧
 
@@ -280,6 +293,8 @@ Deliverable:
 LEE Network Design
 
 ---
+
+<br/>
 
 # Phase 6 – SOC Operations 🚧
 
