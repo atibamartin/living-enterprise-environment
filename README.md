@@ -35,11 +35,11 @@ Living Enterprise Environment — A continuously evolving cloud, cybersecurity, 
 | pfSense | Segmentation |
 | Security Onion | Detection Engineering |
 
+<br/>
+
 ---
 
 # Project Roadmap
-
----
 
 # Phase 1 - OS Foundations
 
@@ -56,7 +56,7 @@ Documentation:
 - v1-linux-auth-logging.md
 - v1-linux-syslog-logging.md
 - v1-linux-kernel-logging.md
-- 
+
 <br/>
 
 ### V2 – Authentication Analysis ✅
@@ -77,6 +77,7 @@ Documentation:
 - v2-linux-authentication-baseline.md
 - v2-sudo-analysis.md
 
+<br/>
 
 ### V3 – Windows Integration 🚧
 
@@ -96,9 +97,10 @@ Documentation:
 - v3-linux-syslog-logging.md
 - v1-linux-kernel-logging.md
   
----
-
 <br/>
+
+
+---
 
 
 # Phase 2 - Network Architecture 🚧
@@ -126,6 +128,8 @@ Documentation:
 
 LEE Network Design Document
 
+<br/>
+
 ### V5 – Network Segmentation Planning 🚧
 
 Focus:
@@ -144,9 +148,9 @@ Skills:
 Deliverable:
 Network Segmentiation Plan
 
----
-
 <br/>
+
+---
 
 
 # Phase 3 - Security Monitoring Foundations 🚧
@@ -175,6 +179,9 @@ Deliverable:
 
 Centralized logging environment
 
+<br/>
+
+
 ### V7 - Controlled Telemetry Generation
 
 Generate known events:
@@ -196,9 +203,9 @@ Deliverable:
 
 Known Event Catalog
 
----
-
 <br/>
+
+---
 
 # Phase 4 - Threat Simulation 🚧
 
@@ -226,6 +233,8 @@ Deliverable:
 
 Attack Detection Report
 
+<br/>
+
 
 ### V9 - Windows Attack Simulation
 
@@ -244,10 +253,10 @@ Deliverable:
 
 Windows Threat Detection Report
 
+<br/>
 
 ---
 
-<br/>
 
 # Phase 5 – Network Security 🚧
 
@@ -274,6 +283,8 @@ Deliverable:
 
 Network Architecture Diagram
 
+<br/>
+
 
 ### V11 - Segmented Environment
 
@@ -293,9 +304,10 @@ Deliverable:
 
 LEE Network Design
 
+<br/>
+
 ---
 
-<br/>
 
 # Phase 6 – SOC Operations 🚧
 
@@ -313,6 +325,8 @@ Focus:
 
 - Reduce false positives
 - Improve alert quality
+
+<br/>
 
 
 ### V13 - Threat Hunting Exercises
@@ -334,6 +348,9 @@ Deliverable:
 
 Threat Hunt Reports
 
+<br/>
+
+
 ### V14 - Incident Response Exercises
 
 Scenarios:
@@ -352,6 +369,9 @@ Skills:
 Deliverable:
 
 Incident Response Reports
+
+<br/>
+
 
 ---
 
@@ -380,6 +400,8 @@ Deliverable:
 
 Vulnerability Assessment Report
 
+<br/>
+
 
 ### V16 - Security Hardening
 
@@ -398,6 +420,8 @@ Windows:
 Deliverable:
 
 Hardening Checklist
+
+<br/>
 
 ---
 
