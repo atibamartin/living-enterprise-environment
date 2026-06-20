@@ -192,7 +192,7 @@ Known Event Catalog
 
 Status:  Planned
 
-## Objective
+### Objective
 
 Create attack telemetry.
 
@@ -237,7 +237,7 @@ Windows Threat Detection Report
 
 Status:  Planned
 
-## Objective
+### Objective
 
 Understand enterprise network controls.
 
@@ -258,7 +258,6 @@ Deliverable:
 
 Network Architecture Diagram
 
----
 
 ### V11 - Segmented Environment
 
@@ -282,11 +281,13 @@ LEE Network Design
 
 # Phase 6 – SOC Operations 🚧
 
-## Objective
+Status:  Planned
+
+
+### Objective
 
 Operate like a SOC analyst.
 
----
 
 ### V12 - Detection Tuning
 
@@ -336,11 +337,11 @@ Incident Response Reports
 
 ---
 
-### Phase 7 – Enterprise Security engineer 🚧
+# Phase 7 – Enterprise Security engineer 🚧
 
-Planned
+Status:  Planned
 
-## Objective
+### Objective
 
 Design security controls rather than simply monitor them.
 
