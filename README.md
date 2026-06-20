@@ -94,11 +94,11 @@ Focus Areas:
 Documentation:
 
 - v3-windows-server-build.md
-- v3-linux-syslog-logging.md
-- v1-linux-kernel-logging.md
+- v3-authentication-investigation.md
+- v3-windows-event-analysis.md
+- v3-windows-ioc-analysis.md
   
 <br/>
-
 
 ---
 
@@ -118,15 +118,6 @@ Focus:
 - IP addressing plan
 - Network roles
 
-Skills:
-
-- Network documentation
-- Security architecture
-- Systems planning
-
-Documentation:
-
-LEE Network Design Document
 
 <br/>
 
@@ -145,8 +136,26 @@ Skills:
 - Trust boundaries
 - Traffic flow analysis
 
-Deliverable:
-Network Segmentiation Plan
+### V – Active Directory Preperation 🚧
+
+Focus:
+
+- 
+- 
+- 
+- 
+
+Skills:
+
+- 
+- 
+- 
+
+Documentation:
+
+- v4-enterprise-network-design.md
+- v5-network-segmentation-planning.md
+- v6-active-directory-network-preparation.md
 
 <br/>
 
@@ -161,7 +170,7 @@ Status:  Planned
 
 Create centralized visibility across the environment.
 
-### V6 - Wazuh Deployment
+### V7 - Wazuh Deployment
 
 Focus:
 
@@ -175,14 +184,9 @@ Skills:
 - Agent deployment
 - Log collection
 
-Deliverable:
-
-Centralized logging environment
-
 <br/>
 
-
-### V7 - Controlled Telemetry Generation
+### V8 - Controlled Telemetry Generation
 
 Generate known events:
 
@@ -199,9 +203,10 @@ Skills:
 - Detection validation
 - Log correlation
 
-Deliverable:
+Documentation:
 
-Known Event Catalog
+- v7-wazuh-deployment.md
+- v8-controlled-telemetry-generation.md
 
 <br/>
 
@@ -215,7 +220,7 @@ Status:  Planned
 
 Create attack telemetry.
 
-### V8 - Linux Attack Simulation
+### V9 - Linux Attack Simulation
 
 Examples:
 
@@ -229,14 +234,9 @@ Skills:
 - Threat analysis
 - Log investigation
 
-Deliverable:
-
-Attack Detection Report
-
 <br/>
 
-
-### V9 - Windows Attack Simulation
+### V10 - Windows Attack Simulation
 
 Examples:
 
@@ -249,9 +249,10 @@ Skills:
 
 - Windows threat detection
 
-Deliverable:
+Documentation:
 
-Windows Threat Detection Report
+- v9-linux-attack-simulation.md
+- v10-windows-attack-simulation.md
 
 <br/>
 
@@ -266,7 +267,7 @@ Status:  Planned
 
 Understand enterprise network controls.
 
-### V10 - pfSense Deployment
+### V11 - pfSense Deployment
 
 Focus:
 
@@ -279,14 +280,9 @@ Skills:
 - Enterprise networking
 - Security architecture
 
-Deliverable:
-
-Network Architecture Diagram
-
 <br/>
 
-
-### V11 - Segmented Environment
+### V12 - Segmented Environment
 
 Networks:
 
@@ -302,24 +298,25 @@ Skills:
 
 Deliverable:
 
-LEE Network Design
+Documentation:
+
+- v11-pfsense-deployment.md
+- v12-segmented-environment.md
 
 <br/>
 
 ---
 
-
 # Phase 6 – SOC Operations 🚧
 
 Status:  Planned
-
 
 ### Objective
 
 Operate like a SOC analyst.
 
 
-### V12 - Detection Tuning
+### V13 - Detection Tuning
 
 Focus:
 
@@ -329,7 +326,7 @@ Focus:
 <br/>
 
 
-### V13 - Threat Hunting Exercises
+### V14 - Threat Hunting Exercises
 
 Hunt for:
 
@@ -344,14 +341,9 @@ Skills:
 - Threat hunting
 - Investigation
 
-Deliverable:
-
-Threat Hunt Reports
-
 <br/>
 
-
-### V14 - Incident Response Exercises
+### V15 - Incident Response Exercises
 
 Scenarios:
 
@@ -366,12 +358,13 @@ Skills:
 - Containment
 - Documentation
 
-Deliverable:
+Documentation:
 
-Incident Response Reports
+- v13-detection-tuning.md
+- v14-threat-hunting.md
+- v15-incident-response.md
 
 <br/>
-
 
 ---
 
@@ -384,7 +377,7 @@ Status:  Planned
 Design security controls rather than simply monitor them.
 
 
-### V15 - Vulnerability Management
+### V16 - Vulnerability Management
 
 Tools:
 
@@ -396,14 +389,11 @@ Skills:
 - Vulnerability assessment
 - Risk prioritization
 
-Deliverable:
-
-Vulnerability Assessment Report
 
 <br/>
 
 
-### V16 - Security Hardening
+### V17 - Security Hardening
 
 Linux:
 
@@ -417,15 +407,15 @@ Windows:
 - Local Policy
 - Event Auditing
 
-Deliverable:
+Documentation:
 
-Hardening Checklist
-
-<br/>
+- v16-vulnerability-management.md
+- v17-security-hardening.md
+- v18-final-enterprise-assessment.md
 
 ---
 
-### V17 - Final Enterprise Assessment
+### V18 - Final Enterprise Assessment
 
 Objective:
 
