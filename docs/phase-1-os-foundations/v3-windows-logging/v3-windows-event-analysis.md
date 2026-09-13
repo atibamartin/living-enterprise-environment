@@ -679,3 +679,67 @@ The investigation established a known-good network authentication baseline, gene
 Most importantly, the exercise demonstrated that authentication analysis requires correlation rather than simply identifying an Event ID.
 
 The combination of identity, source, destination, authentication protocol, logon type, result codes, timestamps, and related events provides the context necessary to distinguish ordinary authentication failures from behavior that may require further security investigation.
+
+# Troubleshooting and Lessons Learned
+
+During the initial authentication baseline, the expected successful connection did not immediately occur. This created an additional troubleshooting opportunity before the controlled authentication investigation began.
+
+## Initial Authentication Failure
+
+The first authentication attempts used the NetBIOS-style domain credential format:
+
+```cmd
+net use \\LEE-WIN-SRV-01\IPC$ /user:LEE\auth.test *
+```
+
+Despite resetting and verifying the password, the authentication attempt returned:
+
+```text
+System error 1326 has occurred.
+
+The user name or password is incorrect.
+```
+
+Rather than continuing to reset the password or modifying domain configuration, the investigation shifted toward validating each component involved in authentication.
+
+---
+
+## Active Directory Account Validation
+
+The `auth.test` account was inspected directly from the domain controller.
+
+The account was confirmed to:
+
+* exist in Active Directory,
+* be enabled,
+* not be locked,
+* have a current password,
+* have a valid User Principal Name (UPN), and
+* record the unsuccessful password attempts through `BadPwdCount` and `LastBadPasswordAttempt`.
+
+This demonstrated that the failed authentication attempts were reaching the domain and affecting the expected Active Directory account state.
+
+---
+
+## Local Logon Test and Error 1385
+
+A separate credential test was attempted on the domain controller using:
+
+```cmd
+runas /user:LEE\auth.test cmd
+```
+
+The result was:
+
+```text
+RUNAS ERROR: Unable to run - cmd
+
+1385: Logon failure: the user has not been granted the requested logon type at this computer.
+```
+
+This was significantly different from error `1326`.
+
+Error `1385` indicated that Windows denied the requested logon type rather than simply reporting invalid credentials.
+
+Because `LEE-WIN-SRV-01` is a domain controller, the test account did not need loc
+
