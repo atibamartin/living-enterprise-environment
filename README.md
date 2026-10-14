@@ -38,6 +38,22 @@ Living Enterprise Environment — A continuously evolving cloud, cybersecurity, 
 <br/>
 
 ---
+# Living Enterprise Environment — Updated Roadmap
+
+**Revision:** October 14, 2026  
+**Purpose:** Align project phases and repository documentation with work actually implemented.
+
+## Revised phases
+
+| Phase | Name | Status | Focus |
+|---|---|---|---|
+| 1 | Enterprise Systems Foundation | Completed | Linux baselines, authentication exercises, AD DS/DNS, domain users, Windows client |
+| 2 | Network Architecture & Segmentation | Core complete; closeout pending | VMware VMnets, pfSense deployment, zone migration, firewall engineering, AD dependencies, Kali isolation |
+| 3 | Security Monitoring Foundations | Next | Dedicated MONITORING segment; Wazuh, Sysmon, agents, pfSense telemetry |
+| 4 | Controlled Threat Simulation | Planned | Linux/Windows test scenarios, scoped access exceptions, repeatable telemetry |
+| 5 | Network Security Expansion & Hardening | Planned (new scope) | Policy review, management-plane controls, monitoring-zone isolation, lateral-movement validation; **not** a second pfSense deployment |
+| 6 | Detection Engineering & SOC Operations | Planned | Detection development/tuning, hunting, investigation, incident response |
+
 
 # Project Roadmap
 
