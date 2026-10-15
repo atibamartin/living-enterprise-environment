@@ -134,7 +134,7 @@ Test-NetConnection 192.168.10.10 -Port 445
 
 ## 8. SYSVOL and Group Policy validation
 
-An early `Test-Path "\\livingenterprise.lab\SYSVOL"` returned False even after TCP 445 was reachable, and an initial computer policy refresh timed out. That result did **not** prove that the SYSVOL share was missing; possible causes included authentication, referrals, RPC dependencies and service state. The team continued testing rather than opening all traffic.
+An early `Test-Path "\\livingenterprise.lab\SYSVOL"` returned False even after TCP 445 was reachable, and an initial computer policy refresh timed out. That result did **not** prove that the SYSVOL share was missing; possible causes included authentication, referrals, RPC dependencies and service state. I continued testing rather than opening all traffic.
 
 **Final observed results:**
 
