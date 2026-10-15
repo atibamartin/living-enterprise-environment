@@ -2,7 +2,8 @@
 
 ## Living Enterprise Environment (LEE)
 
-Phase 2 of the Living Enterprise Environment focuses on transforming the lab from a collection of connected enterprise systems into a deliberately designed **enterprise network architecture**.
+ Phase 2 builds and validates the segmented network foundation for the Living Enterprise Environment. The phase combines the originally planned network architecture work with the pfSense deployment and segmented-environment objectives initially scheduled for Phase 5. It documents the move from flat VMware NAT to four isolated internal zones, explicit firewall policy, restored Active Directory dependencies, and ATTACK-zone default-deny validation. The core implementation is complete; final evidence capture, configuration inventory, and snapshots are tracked in the implementation document. Phase 2 of the Living Enterprise Environment focuses on transforming the lab from a collection of connected enterprise systems into a deliberately designed 
+**enterprise network architecture**.
 
 Phase 1 established the systems that make up the environment:
 
