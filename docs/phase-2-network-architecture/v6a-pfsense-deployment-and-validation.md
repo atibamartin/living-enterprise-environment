@@ -251,12 +251,57 @@ Preserve sanitized screenshots or exported text showing:
 - [x] Validate CLIENT dynamic RPC rule and gateway ICMP exception.
 - [x] Demonstrate default-denied ATTACK DNS and initial gateway ICMP.
 - [x] Attempt protected-zone connections from Kali; all timed out.
-- [ ] Capture matching firewall deny entries for each protected-zone test.
-- [ ] Verify obsolete single-port TCP/49679 diagnostic rule is disabled.
-- [ ] Review Kali's inherited DNS resolver and determine future egress requirements.
-- [ ] Export/review full final rule and alias inventory; verify client NTP rule.
-- [ ] Capture final snapshots of Kali and pfSense and record snapshot names.
-- [ ] Update Phase 2 README and roadmap cross-references.
+- [x] Capture matching firewall deny entries for each protected-zone test.
+- [x] Verify obsolete single-port TCP/49679 diagnostic rule is disabled.
+- [x] Review Kali's inherited DNS resolver and determine future egress requirements.
+- [x] Export/review full final rule and alias inventory; verify client NTP rule.
+- [x] Capture final snapshots of Kali and pfSense and record snapshot names.
+- [x] Update Phase 2 README and roadmap cross-references.
+
+### Final Inter-Zone Firewall Validation — October 14, 2026 (Local)
+
+**Objective:** Validate that pfSense enforces the intended default-deny policy between the ATTACK, SERVER, CLIENT, and MANAGEMENT zones while allowing explicitly authorized traffic.
+
+**Test environment:**
+- ATTACK: `LEE-Kali-01` — `192.168.30.10`
+- SERVER: `LEE-WIN-SRV-01` — `192.168.10.10`
+- CLIENT: `LEE-WIN-CLT-01` — `192.168.20.100`
+- MANAGEMENT: `LEE-Ubuntu-01` — `192.168.40.10`
+- Firewall: `LEE-pfSense-01`
+
+**ATTACK-zone testing:**
+
+```bash
+nc -nvz -w 3 192.168.10.10 445
+nc -nvz -w 3 192.168.20.100 445
+nc -nvz -w 3 192.168.40.10 22
+ping -c 4 192.168.30.1
+```
+
+All three TCP connections timed out. pfSense firewall logs confirmed corresponding default-deny entries on the ATTACK interface.
+
+ICMP Echo Requests to the ATTACK gateway succeeded after implementing a narrowly scoped firewall rule permitting `192.168.30.10` to reach `192.168.30.1`.
+
+**MANAGEMENT-zone testing:**
+
+```bash
+ping -c 4 192.168.10.10
+nc -nvz -w 3 192.168.10.10 445
+```
+
+Both tests failed as expected. pfSense logs confirmed that the MANAGEMENT interface's default-deny policy blocked the ICMP and TCP traffic.
+
+**Security conclusions:**
+
+1. Kali's tested connections to all three protected zones were denied.
+2. The MANAGEMENT host was denied unauthorized access to the domain controller.
+3. Explicitly authorized ICMP traffic to the ATTACK gateway was permitted.
+4. Firewall logs correlated with endpoint-generated test traffic.
+5. No broad inter-zone allow rules were required.
+
+**Result:** PASS — The tested segmentation controls operated as designed.
+
+**Evidence:** pfSense firewall screenshots showing ATTACK and MANAGEMENT interface denies and the authorized ICMP pass.
 
 ## 11. Phase 3 handoff: Dedicated MONITORING zone
 
