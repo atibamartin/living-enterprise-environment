@@ -1,453 +1,76 @@
 # Living Enterprise Environment (LEE)
 
-A continuously evolving cybersecurity,
-cloud, virtualization, automation,
-and detection engineering lab.
+**Enterprise Infrastructure | Network Security | Security Operations | Detection Engineering**
+
+A hands-on enterprise cybersecurity lab focused on designing, securing, monitoring, and investigating interconnected systems.
+
+LEE demonstrates the practical application of enterprise infrastructure and defensive security concepts through system administration, network architecture, authentication analysis, security controls, and developing detection capabilities.
+
+The project is built and maintained by **Atiba Martin**, an enterprise infrastructure professional expanding into Cloud Security and Infrastructure Security.
 
 ---
 
-Living Enterprise Environment — A continuously evolving cloud, cybersecurity, virtualization, and automation lab environment focused on building real-world enterprise skills through hands-on projects, infrastructure design, documentation, security analysis, and DevSecOps workflows. This repository will document the development of labs, scripts, architectures, troubleshooting processes, and operational knowledge across VMware, Linux, networking, cloud platforms, SIEM/SOAR tooling, Terraform, automation, and defensive security practices.
+## Project Highlights
+
+LEE is developed in phases, with each stage building on the infrastructure and security controls established in previous stages.
+
+| Project / Phase | Status | Technical Focus |
+|---|---|---|
+| Phase 1 — Enterprise Systems Foundation | Completed | Linux logging, Windows Server, Active Directory, DNS, authentication investigations |
+| Phase 2 — Network Architecture & Segmentation | Core implementation complete | pfSense, security zones, firewall policies, controlled connectivity |
+| Phase 3 — Security Monitoring Foundations | In progress | Monitoring architecture, Wazuh preparation, centralized telemetry |
+| Phase 4 — Controlled Threat Simulation | Planned | Repeatable Linux and Windows security scenarios |
+| Phase 5 — Network Security Expansion | Planned | Hardening, policy review, lateral movement validation |
+| Phase 6 — Detection Engineering & SOC Operations | Planned | Detection rules, threat hunting, incident investigation |
+
+**Explore the technical work:** [Project Documentation](docs/)
 
 ---
 
-## Environment Overview
+## Featured Technical Walkthroughs
 
-### Core Objectives
+These walkthroughs demonstrate how LEE is designed, implemented, tested, and documented.
 
-- Linux Administration
-- Security Operations
-- Threat Detection
-- SIEM Engineering
-- Cloud Security
-- Automation
-- Incident Response
+### Video 01 — Building the Enterprise Foundation
 
----
+**Status:** In preparation
 
-## Current Environment
+An introduction to LEE, its enterprise architecture, and the Windows and Linux systems supporting authentication, logging, and security investigations.
 
-| System | Purpose |
-|----------|----------|
-| Ubuntu Server | Logging, Linux Administration |
-| Kali Linux | Attack Simulation |
-| Windows Server | Authentication Analysis |
-| Wazuh | SIEM |
-| pfSense | Segmentation |
-| Security Onion | Detection Engineering |
+**Topics:** Active Directory, DNS, Windows authentication, Linux administration, event analysis.
 
-<br/>
+**Watch on LinkedIn:** Link coming soon.
 
----
-# Living Enterprise Environment — Updated Roadmap
+### Video 02 — Engineering Network Segmentation
 
-**Revision:** October 14, 2026  
-**Purpose:** Align project phases and repository documentation with work actually implemented.
+**Status:** Planned
 
-## Revised phases
+A walkthrough of transitioning from a flat virtual network to segmented enterprise security zones, using pfSense to enforce communication boundaries.
 
-| Phase | Name | Status | Focus |
-|---|---|---|---|
-| 1 | Enterprise Systems Foundation | Completed | Linux baselines, authentication exercises, AD DS/DNS, domain users, Windows client |
-| 2 | Network Architecture & Segmentation | Core complete; closeout pending | VMware VMnets, pfSense deployment, zone migration, firewall engineering, AD dependencies, Kali isolation |
-| 3 | Security Monitoring Foundations | Next | Dedicated MONITORING segment; Wazuh, Sysmon, agents, pfSense telemetry |
-| 4 | Controlled Threat Simulation | Planned | Linux/Windows test scenarios, scoped access exceptions, repeatable telemetry |
-| 5 | Network Security Expansion & Hardening | Planned (new scope) | Policy review, management-plane controls, monitoring-zone isolation, lateral-movement validation; **not** a second pfSense deployment |
-| 6 | Detection Engineering & SOC Operations | Planned | Detection development/tuning, hunting, investigation, incident response |
+**Topics:** Network architecture, trust boundaries, firewall rules, Active Directory connectivity, traffic validation.
 
-
-# Project Roadmap
-
-# Phase 1 - OS Foundations
-
-###  V1 – Linux Logging ✅
-
-Status: Completed
-
-- auth.log
-- syslog
-- kern.log
-
-Documentation:
-
-- v1-linux-auth-logging.md
-- v1-linux-syslog-logging.md
-- v1-linux-kernel-logging.md
-
-<br/>
-
-### V2 – Authentication Analysis ✅
-
-Status: Completed
-
-Focus Areas:
-
-- SSH Authentication
-- Failed Logins
-- Brute Force Detection
-- Account Lockouts
-- Privilege Escalation
-
-Documentation:
-
-- v2-authentication-baseline.md
-- v2-linux-authentication-baseline.md
-- v2-sudo-analysis.md
-
-<br/>
-
-### V3 – Windows Integration 🚧
-
-Status: In Progress
-
-Focus Areas:
-
-- Windows Event Viewer
-- Security Logs
-- System Logs
-- Application Logs
-- Privilege Escalation
-
-Documentation:
-
-- v3-windows-server-build.md
-- v3-authentication-investigation.md
-- v3-windows-event-analysis.md
-- v3-windows-ioc-analysis.md
-  
-<br/>
+**Watch on LinkedIn:** Link coming soon.
 
 ---
 
+## Engineering Approach
 
-# Phase 2 - Network Architecture 🚧
+**Build → Baseline → Generate Activity → Investigate → Identify Indicators → Detect → Engineer Detections**
 
-### Objective
+LEE follows an iterative engineering process emphasizing practical implementation, verification, troubleshooting, and documentation.
 
-Design and Build out a network to support an enterprise.
-
-### V4 – Enterprise Network Design 🚧
-
-Focus:
-
-- Current LEE network
-- Future-state architecture
-- IP addressing plan
-- Network roles
-
-
-<br/>
-
-### V5 – Network Segmentation Planning 🚧
-
-Focus:
-
-- Server network
-- User network
-- Security network
-- Management network
-
-Skills:
-
-- Segmentation concepts
-- Trust boundaries
-- Traffic flow analysis
-
-### V – Active Directory Preperation 🚧
-
-Focus:
-
-- 
-- 
-- 
-- 
-
-Skills:
-
-- 
-- 
-- 
-
-Documentation:
-
-- v4-enterprise-network-design.md
-- v5-network-segmentation-planning.md
-- v6-active-directory-network-preparation.md
-
-<br/>
+The objective is not simply to deploy technologies, but to understand how enterprise systems interact, how security controls affect those interactions, and how system activity can be investigated and translated into actionable detections.
 
 ---
 
+## Connect
 
-# Phase 3 - Security Monitoring Foundations 🚧
+**Atiba Martin**
 
-Status:  Planned
+Senior Information Systems Operations | Cloud & Infrastructure Security
 
-### Objective
+- [LinkedIn](https://www.linkedin.com/in/atibaimartin/)
+- [GitHub](https://github.com/atibamartin)
+- [Living Enterprise Environment](https://github.com/atibamartin/living-enterprise-environment)
 
-Create centralized visibility across the environment.
-
-### V7 - Wazuh Deployment
-
-Focus:
-
-- Wazuh Manager
-- Linux Agent
-- Windows Agent
-
-Skills:
-
-- SIEM fundamentals
-- Agent deployment
-- Log collection
-
-<br/>
-
-### V8 - Controlled Telemetry Generation
-
-Generate known events:
-
-Examples:
-
-- Failed SSH logins
-- Failed Windows logins
-- File modifications
-- User creation
-- Service changes
-
-Skills:
-
-- Detection validation
-- Log correlation
-
-Documentation:
-
-- v7-wazuh-deployment.md
-- v8-controlled-telemetry-generation.md
-
-<br/>
-
----
-
-# Phase 4 - Threat Simulation 🚧
-
-Status:  Planned
-
-### Objective
-
-Create attack telemetry.
-
-### V9 - Linux Attack Simulation
-
-Examples:
-
-- Brute force attempts
-- Privilege escalation
-- Suspicious commands
-- Persistence mechanisms
-
-Skills:
-
-- Threat analysis
-- Log investigation
-
-<br/>
-
-### V10 - Windows Attack Simulation
-
-Examples:
-
-- Failed logins
-- PowerShell activity
-- User creation
-- Scheduled task persistence
-
-Skills:
-
-- Windows threat detection
-
-Documentation:
-
-- v9-linux-attack-simulation.md
-- v10-windows-attack-simulation.md
-
-<br/>
-
----
-
-
-# Phase 5 – Network Security 🚧
-
-Status:  Planned
-
-### Objective
-
-Understand enterprise network controls.
-
-### V11 - pfSense Deployment
-
-Focus:
-
-- Firewall rules
-- VLANs
-- Network segmentation
-
-Skills:
-
-- Enterprise networking
-- Security architecture
-
-<br/>
-
-### V12 - Segmented Environment
-
-Networks:
-
-- User Network
-- Server Network
-- Management Network
-- Security Network
-
-Skills:
-
-- Segmentation
-- Traffic control
-
-Deliverable:
-
-Documentation:
-
-- v11-pfsense-deployment.md
-- v12-segmented-environment.md
-
-<br/>
-
----
-
-# Phase 6 – SOC Operations 🚧
-
-Status:  Planned
-
-### Objective
-
-Operate like a SOC analyst.
-
-
-### V13 - Detection Tuning
-
-Focus:
-
-- Reduce false positives
-- Improve alert quality
-
-<br/>
-
-
-### V14 - Threat Hunting Exercises
-
-Hunt for:
-
-- Failed logins
-- New users
-- Privilege escalation
-- Persistence
-- Malware indicators
-
-Skills:
-
-- Threat hunting
-- Investigation
-
-<br/>
-
-### V15 - Incident Response Exercises
-
-Scenarios:
-
-- Account compromise
-- Malware infection
-- Insider activity
-- Unauthorized access
-
-Skills:
-
-- Incident response
-- Containment
-- Documentation
-
-Documentation:
-
-- v13-detection-tuning.md
-- v14-threat-hunting.md
-- v15-incident-response.md
-
-<br/>
-
----
-
-# Phase 7 – Enterprise Security engineer 🚧
-
-Status:  Planned
-
-### Objective
-
-Design security controls rather than simply monitor them.
-
-
-### V16 - Vulnerability Management
-
-Tools:
-
-- OpenVAS
-- Nessus Essentials
-
-Skills:
-
-- Vulnerability assessment
-- Risk prioritization
-
-
-<br/>
-
-
-### V17 - Security Hardening
-
-Linux:
-
-- SSH
-- AppArmor
-- Auditd
-
-Windows:
-
-- Defender
-- Local Policy
-- Event Auditing
-
-Documentation:
-
-- v16-vulnerability-management.md
-- v17-security-hardening.md
-- v18-final-enterprise-assessment.md
-
----
-
-### V18 - Final Enterprise Assessment
-
-Objective:
-
-Evaluate the entire Living Enterprise Environment as if it were a production enterprise.
-
-Deliverables:
-
-- Asset Inventory
-- Network Diagram
-- Security Architecture
-- Baseline Documentation
-- Detection Library
-- Incident Response Procedures
-- Lessons Learned
-
-Outcome:
-
-A complete portfolio demonstrating enterprise operations, security monitoring, threat detection, and incident response capabilities.
-
+*Continuous learning, practical experience, and a commitment to building safer, more resilient systems.*
